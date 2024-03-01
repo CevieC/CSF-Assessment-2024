@@ -8,7 +8,6 @@ export class ProductService {
 
   private http = inject(HttpClient)
 
-
   // IMPORTANT: DO NOT MODIFY THIS METHOD.
   // If this method is changed, any assessment task relying on this method will
   // not be marked
@@ -31,8 +30,8 @@ export class ProductService {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      }
+      },
     });
   }
-  
+
 }

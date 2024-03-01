@@ -57,9 +57,11 @@ export class ConfirmCheckoutComponent implements OnInit {
       this.productService.checkout(order).subscribe({
         next: (response) => {
           console.log('Order successfully placed', response);
+          alert(`OrderId: ${response.orderId}`);
         },
         error: (error) => {
           console.error('Error placing order', error);
+          alert(`message: ${error}`);
         }
       });
     } else {
