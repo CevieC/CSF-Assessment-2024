@@ -29,7 +29,6 @@ ENV DATABASE_PASSWORD=""
 
 ENV MONGO_DB_URL=""
 
-# Expose the Spring Boot default port
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "target/ecommerce-1.0.0.jar"]
