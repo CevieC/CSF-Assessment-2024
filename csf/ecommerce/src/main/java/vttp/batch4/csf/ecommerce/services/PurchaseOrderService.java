@@ -16,7 +16,7 @@ public class PurchaseOrderService {
   // If this method is changed, any assessment task relying on this method will
   // not be marked
   // You may only add Exception to the method's signature
-  public void createNewPurchaseOrder(Order order) {
+  public void createNewPurchaseOrder(Order order) throws Exception {
     poRepo.create(order);
   }
 }

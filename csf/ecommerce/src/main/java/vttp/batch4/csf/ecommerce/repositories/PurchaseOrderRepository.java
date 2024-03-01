@@ -1,9 +1,14 @@
 package vttp.batch4.csf.ecommerce.repositories;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import vttp.batch4.csf.ecommerce.models.LineItem;
 import vttp.batch4.csf.ecommerce.models.Order;
 
 @Repository
@@ -27,10 +32,10 @@ public class PurchaseOrderRepository {
 
         final String insertLineItemSql = "INSERT INTO LineItems (order_id, prodId, quantity, name, price) VALUES (?, ?, ?, ?, ?)";
         for (LineItem item : order.getCart().getLineItems()) {
-            template.update(insertLineItemSql, orderId, item.getProdId(), item.getQuantity(), item.getName(), item.getPrice());
+            template.update(insertLineItemSql, orderId, item.getProductId(), item.getQuantity(), item.getName(), item.getPrice());
         }
     } catch (Exception e) {
-        Logger.getLogger(PurchaseOrderRepository.class.getName()).log();
+        Logger.getLogger(PurchaseOrderRepository.class.getName()).log(Level.SEVERE, "Error");
         throw new Exception("Error creating order and line items in the database", e);
     }
   }
