@@ -27,12 +27,13 @@ public class OrderController {
   // If this method is changed, any assessment task relying on this method will
   // not be marked""
   @PostMapping(path="/order")
-    public ResponseEntity<Map<String, Order>> postOrder(@RequestBody Order order) {
+    public ResponseEntity<Map<String, String>> postOrder(@RequestBody Order order) {
       try {
-        Order orderId = poSvc.createNewPurchaseOrder(order);
+        poSvc.createNewPurchaseOrder(order);
+        String orderId = order.getOrderId();
         return ResponseEntity.ok(Collections.singletonMap("orderId", orderId));
       } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", "Error processing order").toString());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", "Error processing order"));
       }
     }
 }
